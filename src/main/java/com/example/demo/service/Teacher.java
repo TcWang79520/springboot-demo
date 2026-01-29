@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.component.Printer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class Teacher {
 
     @Autowired
+    @Qualifier("hpPrinter")
     private Printer printer;
 
     public void teach() {

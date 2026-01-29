@@ -3,11 +3,11 @@ package com.example.demo.component;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HpPrinter implements Printer {
+public class CanonPrinter implements Printer {
 
     @Override
     public void print(String message) {
-        System.out.println("HP印表機 : "+message);
+        System.out.println("Canon印表機 : "+message);
     }
 
 }
