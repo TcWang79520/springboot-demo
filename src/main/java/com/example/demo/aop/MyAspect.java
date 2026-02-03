@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyAspect {
 
+    // 此切入點 表示 HpPrinter 的所有方法
     @Before("execution(* com.example.demo.component.HpPrinter.*(..))")
     public void before(){
         System.out.println("\nI'm before");
