@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MyController {
 
     @Autowired
-    @Qualifier("canonPrinter") // First need to be lowercase word
+    @Qualifier("hpPrinter") // First need to be lowercase word
     private Printer printer;
 
     @RequestMapping("/test")

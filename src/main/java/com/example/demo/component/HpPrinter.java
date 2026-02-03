@@ -17,7 +17,7 @@ public class HpPrinter implements Printer {
     public void print(String message) {
         count--;
         System.out.println("HP印表機 : "+message);
-        System.out.print("剩餘使用次數 : "+ count);
+        System.out.println("剩餘使用次數 : "+ count);
     }
 
 }
