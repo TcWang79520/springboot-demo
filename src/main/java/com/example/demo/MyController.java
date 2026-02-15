@@ -1,10 +1,15 @@
 package com.example.demo;
 
 import com.example.demo.component.Printer;
+import com.example.demo.vo.Store;
+import com.example.demo.vo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class MyController {
@@ -20,7 +25,22 @@ public class MyController {
     }
 
     @RequestMapping("/product")
-    public String product(){
-        return "First Apple , Second Orange!";
+    public Store product(){
+        Store store = new Store();
+        List<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        store.setProductList(list);
+        return store;
+    }
+
+
+    @RequestMapping("/student")
+    public Student student(){
+        Student student = new Student();
+        student.setId("123");
+        student.setName("Judy");
+        return student;
+
     }
 }
