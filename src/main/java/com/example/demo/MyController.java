@@ -18,4 +18,9 @@ public class MyController {
         printer.print("Hello Autowired");
         return "Hello World";
     }
+
+    @RequestMapping("/product")
+    public String product(){
+        return "First Apple , Second Orange!";
+    }
 }
