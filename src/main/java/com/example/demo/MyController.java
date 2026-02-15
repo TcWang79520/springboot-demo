@@ -6,6 +6,7 @@ import com.example.demo.vo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -19,9 +20,9 @@ public class MyController {
     private Printer printer;
 
     @RequestMapping("/test")
-    public String test(){
-        printer.print("Hello Autowired");
-        return "Hello World";
+    public String test(@RequestParam Integer id) {
+        printer.print("Hello Autowired : " + id);
+        return "Get ID Success : " + id;
     }
 
     @RequestMapping("/product")
