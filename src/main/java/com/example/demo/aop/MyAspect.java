@@ -25,9 +25,13 @@ public class MyAspect {
 
     @Around("execution(* com.example.demo.component.HpPrinter.*(..))")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable{
+        long start = System.currentTimeMillis();
         System.out.println("I'm around before");
         // 執行切入點的方法 , obj 為切入方法執行的結果
         Object obj = joinPoint.proceed();
+        long end = System.currentTimeMillis();
+        
+        System.out.println("耗時：" + (end - start));
         System.out.println("I'm around after");
         return obj;
     }
