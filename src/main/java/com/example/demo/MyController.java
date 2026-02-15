@@ -5,10 +5,7 @@ import com.example.demo.vo.Store;
 import com.example.demo.vo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +44,10 @@ public class MyController {
     }
 
     @RequestMapping("/student/enroll")
-    public String studentEnroll(@RequestBody Student student) {
+    public String studentEnroll(@RequestBody Student student, @RequestHeader String info) {
+
         System.out.println(student.toString());
+        System.out.println("Header Value : " + info);
         return "Enroll Success : " + student.toString();
 
     }
