@@ -43,12 +43,16 @@ public class MyController {
 
     }
 
-    @RequestMapping("/student/enroll")
-    public String studentEnroll(@RequestBody Student student, @RequestHeader String info) {
-
-        System.out.println(student.toString());
+    @RequestMapping("/student/{action}")
+    public String studentAction(@PathVariable String action ,
+                                @RequestBody Student student, @RequestHeader String info) {
         System.out.println("Header Value : " + info);
-        return "Enroll Success : " + student.toString();
+        System.out.println("action Value : " + action);
+
+        if(action.equals("enroll")){
+            return "Action : "+action + "  Success : " + student.toString();
+        }
+        return "Student Action : " + action;
 
     }
 
