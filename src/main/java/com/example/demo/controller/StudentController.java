@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.StudentRowMapper;
+import com.example.demo.service.StudentService;
 import com.example.demo.vo.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -10,25 +11,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.example.demo.service.StudentService.*;
+
 @RestController
 public class StudentController {
 
     @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
+    @Autowired
+    private StudentService studentService;
+
     @PostMapping("/students")
     public String create(@RequestBody Student student) {
 
-        String sql = "INSERT INTO student (id,name ) VALUES (:studentId, :studentName)";
+        int insertRet = studentService.add(student);
 
-        Map<String,Object> map = new HashMap<>();
-        map.put("studentId", student.getId());
-        map.put("studentName", student.getName());
+        if(insertRet>0){
+            return "Success Create Student";
+        } else {
+            return "Fail Create Student";
+        }
 
-        namedParameterJdbcTemplate.update(sql,map);
-
-
-        return "DB Create Action";
     }
 
     @GetMapping("/students/all")
@@ -41,13 +45,13 @@ public class StudentController {
         List<Student> studentsList = namedParameterJdbcTemplate.query(
                 sql,map,rowMapper);
 
-        return studentsList;
+        return studentService.getAll();
     }
 
 
     @GetMapping("/students/{studentId}")
-    public String read(@PathVariable Integer studentId) {
-        return "DB Get Action";
+    public Student read(@PathVariable Integer studentId) {
+        return studentService.getById(studentId);
     }
 
     @PutMapping("/students/{studentId}")
