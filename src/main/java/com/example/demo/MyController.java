@@ -37,7 +37,7 @@ public class MyController {
     @RequestMapping("/student")
     public Student student(){
         Student student = new Student();
-        student.setId("123");
+        student.setId(999);
         student.setName("Judy");
         return student;
 
